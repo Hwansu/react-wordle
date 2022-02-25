@@ -1,8 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Row from './Row'
-
-const words = ['hello']
-export const word = words[0]
 
 export default function Board() {
   const [rowIdx, setRowIdx] = useState(0)
@@ -17,11 +14,17 @@ export default function Board() {
     setBoards([...boards])
   }
 
+  const deleteStr = () => {
+    boards[rowIdx] = boards[rowIdx].substring(0, boards[rowIdx].length - 1)
+    setBoards([...boards])
+  }
+
   const handleKeyDown = (e) => {
     // console.log(e.key)
     if (rowIdx >= 7) return
     const str = boards[rowIdx]
     if (str.length >= 5 && e.key === 'Enter') return setDoChecking()
+    if (str.length <= 5 && e.key === 'Backspace') return deleteStr()
     e.key.length === 1 && str.length < 5 && addStr(e.key)
   }
 

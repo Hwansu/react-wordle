@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { word } from './Board'
+import word from '../words'
 
 export default function Row({ str, doCheck }) {
   const [yn, setYN] = useState(['', '', '', '', ''])
@@ -13,8 +13,7 @@ export default function Row({ str, doCheck }) {
   }
 
   useEffect(() => {
-    // if (idx !== row) return
-    console.log(str, doCheck)
+    console.log(word)
     doCheck && checkWord(str)
   }, [str, doCheck])
 
