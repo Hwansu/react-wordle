@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.board {
+  height: 100vh;
+}
+.board:focus {
+  outline: none;
+}
+
+.row {
+  align-items: center;
+  gap: 4px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: solid darkgrey 1px;
+  display: inline-flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.cell.y {
+  background-color: green;
+}
+.cell.n {
+  background-color: darkgray;
+}
