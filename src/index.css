@@ -12,8 +12,19 @@ code {
     monospace;
 }
 
+header {
+  align-items: center;
+  height: 60px;
+  justify-content: center;
+  display: flex;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+}
+
 .board {
   height: 100vh;
+  padding-top: 40px;
 }
 .board:focus {
   outline: none;
@@ -41,9 +52,16 @@ code {
   text-transform: uppercase;
 }
 
-.cell.y {
-  background-color: green;
+.cell.y1 {
+  background-color: limegreen;
+}
+.cell.y2 {
+  background-color: yellow;
 }
 .cell.n {
   background-color: darkgray;
+}
+
+.btnDiv {
+  padding-top: 30px;
 }

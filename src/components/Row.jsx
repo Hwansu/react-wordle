@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import word from '../words'
 
-export default function Row({ str, doCheck }) {
-  const [yn, setYN] = useState(['', '', '', '', ''])
+const defaultYN = ['', '', '', '', '']
 
-  const checkWord = (param) => {
-    setYN(
-      param.split('').map((cur, idx) => {
-        return cur === word[idx] ? 'y' : 'n'
-      })
-    )
+export default function Row({ str, doCheck }) {
+  const [yn, setYN] = useState([...defaultYN])
+
+  const checkWord = () => {
+    doCheck
+      ? setYN(
+          str.split('').map((cur, idx) => {
+            return cur === word[idx] ? 'y1' : word.includes(cur) ? 'y2' : 'n'
+          })
+        )
+      : setYN([...defaultYN])
   }
 
   useEffect(() => {
-    console.log(word)
-    doCheck && checkWord(str)
+    // console.log(word)
+    checkWord()
   }, [str, doCheck])
 
   return (

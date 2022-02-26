@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Row from './Row'
 
+const defaultBoards = ['', '', '', '', '', '', '']
+
 export default function Board() {
   const [rowIdx, setRowIdx] = useState(0)
-  const [boards, setBoards] = useState(['', '', '', '', '', '', ''])
+  const [boards, setBoards] = useState([...defaultBoards])
 
   const setDoChecking = () => {
     setRowIdx(rowIdx + 1)
@@ -17,6 +19,11 @@ export default function Board() {
   const deleteStr = () => {
     boards[rowIdx] = boards[rowIdx].substring(0, boards[rowIdx].length - 1)
     setBoards([...boards])
+  }
+
+  const handleReset = () => {
+    setRowIdx(0)
+    setBoards([...defaultBoards])
   }
 
   const handleKeyDown = (e) => {
@@ -33,6 +40,9 @@ export default function Board() {
       {boards.map((cur, idx) => (
         <Row key={idx} str={cur} doCheck={idx < rowIdx}></Row>
       ))}
+      <div className="btnDiv">
+        <button onClick={handleReset}>RESET</button>
+      </div>
     </div>
   )
 }
